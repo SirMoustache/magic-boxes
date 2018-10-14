@@ -1,0 +1,17 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "modules": false
+      }
+    ],
+    "stage-3"
+  ],
+  "plugins": [],
+  "env": {
+    "test": {
+      "presets": ["env", "stage-3"]
+    }
+  }
+}
