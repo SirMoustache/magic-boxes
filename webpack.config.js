@@ -1,13 +1,13 @@
 const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-const DIR_SRC = 'src';
+const DIR_SRC = './src';
 const DIR_DEST = process.env.dest || 'build';
 
 module.exports = {
   entry: {
-    'magic-box': path.resolve(__dirname, DIR_SRC, 'IO.js'),
-    'magic-box.min': path.resolve(__dirname, DIR_SRC, 'IO.js'),
+    'magic-box': path.resolve(__dirname, DIR_SRC, 'index.js'),
+    'magic-box.min': path.resolve(__dirname, DIR_SRC, 'index.js'),
   },
   output: {
     filename: '[name].js',
