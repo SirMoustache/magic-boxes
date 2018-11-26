@@ -6,12 +6,12 @@ const DIR_DEST = process.env.dest || 'build';
 
 module.exports = {
   entry: {
-    'magic-box': path.resolve(__dirname, DIR_SRC, 'index.js'),
-    'magic-box.min': path.resolve(__dirname, DIR_SRC, 'index.js'),
+    'magic-boxes': path.resolve(__dirname, DIR_SRC, 'index.js'),
+    'magic-boxes.min': path.resolve(__dirname, DIR_SRC, 'index.js'),
   },
   output: {
     filename: '[name].js',
-    library: 'MAGIC',
+    library: 'MB',
     libraryTarget: 'umd',
     path: path.resolve(__dirname, DIR_DEST),
     globalObject: "typeof self !== 'undefined' ? self : this",

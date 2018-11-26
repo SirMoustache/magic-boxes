@@ -4,6 +4,7 @@
 log/
 dist/
 build/
+es/
 node_modules/
 bower_components/
 
