@@ -16,7 +16,7 @@
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --ignore __tests__",
     "lint": "eslint ./src/** --ignore-path .gitignore",
     "lint:fix": "eslint ./src/** --ignore-path .gitignore --fix",
-    "prettify": "prettier --write",
+    "prettify": "prettier --write ./src/**",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
