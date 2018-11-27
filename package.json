@@ -1,6 +1,6 @@
 {
   "name": "magic-boxes",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "build/magic-boxes.js",
   "repository": {
     "type": "git",
