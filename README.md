@@ -9,8 +9,9 @@ This is toy realization of Monads just to understand them. Well, that was the ma
 
 `npm install --save magic-boxes`
 
-## IO Monad
-Input/Output 
+## IO (Input/Output) Monad
+
+So this is like a cheat in FP world. Impure function stays pure until you run it. So push this run to the edges or even outside of applications with lazy functions.
 
 Usage 
 
@@ -50,3 +51,7 @@ Bumping a patch version
 ```bash
 npm version patch
 ```
+## TODO
+- [ ] IO Monad
+- [ ] IO Monat examples
+- [ ] More items to TODO list
