@@ -4,7 +4,7 @@
   },
   "verbose": true,
   "testRegex": "(\/__tests__\/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-  "testPathIgnorePatterns": ["/node_modules/", "/build/", "/es/"],
+  "testPathIgnorePatterns": ["<rootDir>//node_modules/", "<rootDir>//build/", "<rootDir>//es/"],
   "roots": ["<rootDir>/src"],
   "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"]
 }
