@@ -3,7 +3,8 @@
     "^.+\\.js$": "babel-jest"
   },
   "verbose": true,
-  "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+  "testRegex": "(\/__tests__\/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
   "testPathIgnorePatterns": ["/node_modules/", "/build/", "/es/"],
+  "roots": ["<rootDir>/src"],
   "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"]
 }
