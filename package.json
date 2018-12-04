@@ -13,7 +13,7 @@
     "prebuild": "npm run clean",
     "build": "npm run build:umd && npm run build:es",
     "build:umd": "webpack --config webpack.config.js",
-    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --ignore __tests__",
+    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --ignore **/__tests__/**",
     "lint": "eslint ./src/** --ignore-path .gitignore",
     "lint:fix": "eslint ./src/** --ignore-path .gitignore --fix",
     "prettify": "prettier --write ./src/**",
