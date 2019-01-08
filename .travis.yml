@@ -1,3 +1,8 @@
 language: node_js
 node_js:
   - v10
+addons:
+  sonarcloud:
+    organization: "sirmoustache-github"
+script:
+  - sonar-scanner
