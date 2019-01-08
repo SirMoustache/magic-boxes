@@ -29,13 +29,6 @@ module.exports = {
     'import/no-unresolved': 2,
     'import/no-webpack-loader-syntax': 0,
     'import/prefer-default-export': 0,
-    indent: [
-      2,
-      2,
-      {
-        SwitchCase: 1,
-      },
-    ],
     'max-len': 0,
     'newline-per-chained-call': 0,
     'no-confusing-arrow': 0,
@@ -43,12 +36,5 @@ module.exports = {
     'no-use-before-define': 0,
     'prefer-template': 2,
     'require-yield': 0,
-  },
-  settings: {
-    'import/resolver': {
-      webpack: {
-        config: './webpack.js',
-      },
-    },
   },
 };
