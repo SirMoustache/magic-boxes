@@ -22,38 +22,18 @@ Usage
 import { IO } from 'magic-boxes';
 ```
 
+## Documentation
+[It ain't much...](docs)
+
 ## Building yourself
 
 ```bash
 git clone https://github.com/SirMoustache/magic-boxes.git
 cd magic-boxes
 npm install
-```
-
-Build
-```bash
 npm run build
 ```
 
-Prettify files
-```bash
-npm run prettify
-```
-
-Test
-```bash
-npm test
-```
-
-Publish to npm
-```bash
-npm publish
-```
-
-Bumping a patch version
-```bash
-npm version patch
-```
 ## TODO
 - [ ] IO Monad
 - [ ] IO Monat examples
