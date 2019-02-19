@@ -43,9 +43,15 @@ Run Tests
 npm test
 ```
 
-Bumping a patch version
+Bumping a patch version. 
+This will increment package.json version and run `preversion`, `version` and  `postversion` hooks.
 ```bash
+# patch 0.0.x
 npm version patch
+# minor 0.x.0
+npm version minor
+# major x.0.0
+npm version major
 ```
 
 Publish to npm
