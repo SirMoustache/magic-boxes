@@ -60,6 +60,12 @@ npm login
 npm publish
 ```
 
+Check outdated dependencies
+```bash
+# Add -u or --update flag for update
+npx npm-check
+```
+
 ### Scripts
 
 **prepare** will run both before the package is packed and published, and on local `npm install`
