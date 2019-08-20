@@ -1,13 +1,13 @@
 const path = require('path');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const DIR_SRC = './src';
 const DIR_DEST = process.env.dest || 'build';
 
 module.exports = {
   entry: {
-    'magic-boxes': path.resolve(__dirname, DIR_SRC, 'index.js'),
-    'magic-boxes.min': path.resolve(__dirname, DIR_SRC, 'index.js'),
+    'magic-boxes': path.resolve(__dirname, DIR_SRC, 'index.ts'),
+    'magic-boxes.min': path.resolve(__dirname, DIR_SRC, 'index.ts'),
   },
   output: {
     filename: '[name].js',
@@ -20,20 +20,24 @@ module.exports = {
   optimization: {
     minimize: true,
     minimizer: [
-      new UglifyJsPlugin({
-        include: /\.min\.js$/,
+      new TerserPlugin({
+        test: /\.min\.js$/,
       }),
+      // new UglifyJsPlugin({
+      //   include: /\.min\.js$/,
+      // }),
     ],
   },
   resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
     modules: [DIR_SRC, 'node_modules'],
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',
       },
     ],
   },
