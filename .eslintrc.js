@@ -3,9 +3,9 @@ const fs = require('fs');
 const prettierOptions = JSON.parse(fs.readFileSync('./.prettierrc', 'utf8'));
 
 module.exports = {
-  parser: 'babel-eslint',
+  parser: '@typescript-eslint/parser',
   extends: ['airbnb-base', 'prettier'],
-  plugins: ['prettier'],
+  plugins: ['prettier', '@typescript-eslint'],
   env: {
     browser: true,
     node: true,
@@ -36,5 +36,12 @@ module.exports = {
     'no-use-before-define': 0,
     'prefer-template': 2,
     'require-yield': 0,
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
   },
 };
