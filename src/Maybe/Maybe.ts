@@ -52,6 +52,12 @@ export interface IMaybe<A> {
   // ap(b: IMaybe<any>): IMaybe<any>;
   // ap(b: any): any;
   toString: () => string;
+
+  // map<B>(f: (_: A) => B): IMaybe<B>;
+  // apply<A, B>(this: IMaybe< >, f: IMaybe<A>): IMaybe<B>;
+  // as NonNullable<(_: A) => B>
+  apply<A, B>(v: IMaybe<A>): IMaybe<B>;
+  // apply<A, B>(f: IMaybe<A>): IMaybe<B>;
 }
 
 // export type MaybeStatic = {
@@ -64,6 +70,8 @@ export interface IMaybe<A> {
 export type mapper = <T, B>(val: T) => B;
 export type transform<A, B> = (val: NonNullable<A>) => B;
 export type joinFn<T> = (f?: (val: T) => any) => any;
+
+export type func<A, B> = NonNullable<(a: NonNullable<A>) => B>;
 
 // const exampleMap = <T>(value?: T) => <R>(fn: (t: NonNullable<T>) => R) =>
 //   isNil(value) ? Maybe<R>() : Maybe<R>(fn(value as NonNullable<T>));
@@ -84,6 +92,9 @@ export const makeChain = <A>(val?: A) => <B>(
 export const makeAp = <A, B>(val?: (a: NonNullable<A>) => B) => (
   b: IMaybe<any>,
 ) => (isNil(val) ? b : b.map(val as NonNullable<(a: NonNullable<A>) => B>));
+
+export const makeApply = <A, B>(val?: any) => (b: IMaybe<any>) =>
+  isNil(val) ? b : b.map(val as NonNullable<(a: NonNullable<A>) => B>);
 
 const Maybe = <A>(val?: A): IMaybe<A> => ({
   /**
@@ -129,6 +140,7 @@ const Maybe = <A>(val?: A): IMaybe<A> => ({
    * or <B>(b: Maybe<B>) => b.map(val),
    */
   // ap: makeAp(val),
+  apply: makeApply(val),
   /**
    * TODO
    */
@@ -150,6 +162,10 @@ let test = Maybe<number>()
   .map(val => val.toUpperCase())
   .orElse('1');
 //.join();
+
+let test2 = Maybe((x: number) => x + 1)
+  .apply(Maybe(3))
+  .map(val => val);
 
 test;
 
