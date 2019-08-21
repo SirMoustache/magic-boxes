@@ -56,7 +56,8 @@ export interface IMaybe<A> {
   // map<B>(f: (_: A) => B): IMaybe<B>;
   // apply<A, B>(this: IMaybe< >, f: IMaybe<A>): IMaybe<B>;
   // as NonNullable<(_: A) => B>
-  apply<A, B>(v: IMaybe<A>): IMaybe<B>;
+  // apply<A, B>(v: IMaybe<A>): IMaybe<B>;
+  apply<B, C>(b: IMaybe<B>): IMaybe<C>;
   // apply<A, B>(f: IMaybe<A>): IMaybe<B>;
 }
 
@@ -93,8 +94,11 @@ export const makeAp = <A, B>(val?: (a: NonNullable<A>) => B) => (
   b: IMaybe<any>,
 ) => (isNil(val) ? b : b.map(val as NonNullable<(a: NonNullable<A>) => B>));
 
-export const makeApply = <A, B>(val?: any) => (b: IMaybe<any>) =>
-  isNil(val) ? b : b.map(val as NonNullable<(a: NonNullable<A>) => B>);
+// export const makeApply = <A, B>(val?: any) => (b: IMaybe<any>) =>
+//   isNil(val) ? b : b.map(val as NonNullable<(a: NonNullable<A>) => B>);
+
+export const makeApply = <A>(val?: any) => <B, C>(b: IMaybe<B>) =>
+  isNil(val) ? Maybe<C>() : b.map(val as NonNullable<(a: any) => C>);
 
 const Maybe = <A>(val?: A): IMaybe<A> => ({
   /**
@@ -163,8 +167,12 @@ let test = Maybe<number>()
   .orElse('1');
 //.join();
 
-let test2 = Maybe((x: number) => x + 1)
+let test2 = Maybe((x: number) => x.toString())
   .apply(Maybe(3))
+  .map(val => val);
+
+let test3 = Maybe((x: number) => x + 1)
+  .map(val => val(3))
   .map(val => val);
 
 test;
