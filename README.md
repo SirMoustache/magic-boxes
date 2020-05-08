@@ -4,7 +4,7 @@
 
 # Magic Boxes
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/SirMoustache/magic-boxes.svg)](https://greenkeeper.io/)
+
 
 This is toy realization of Monads just to understand them. Well, that was the main idea.  :/
 
