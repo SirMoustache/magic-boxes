@@ -22,10 +22,7 @@ const IO = (effect: Function) => ({
    * Doing a regular mapping, then flattening out the result with .join().
    * Expects another IO as argument
    */
-  chain: (f: Function) =>
-    IO(effect)
-      .map(f)
-      .join(),
+  chain: (f: Function) => IO(effect).map(f).join(),
 });
 
 /**

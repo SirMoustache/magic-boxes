@@ -162,18 +162,18 @@ const Maybe = <A>(val?: A): IMaybe<A> => ({
 //   .map(val => val.trim());
 
 let test = Maybe<number>()
-  .map(val => val.toString())
-  .map(val => val.toUpperCase())
+  .map((val) => val.toString())
+  .map((val) => val.toUpperCase())
   .orElse('1');
 //.join();
 
 let test2 = Maybe((x: number) => x.toString())
   .apply(Maybe(3))
-  .map(val => val);
+  .map((val) => val);
 
 let test3 = Maybe((x: number) => x + 1)
-  .map(val => val(3))
-  .map(val => val);
+  .map((val) => val(3))
+  .map((val) => val);
 
 test;
 
