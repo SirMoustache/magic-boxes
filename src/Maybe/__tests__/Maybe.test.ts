@@ -43,4 +43,14 @@ describe('maybe  Monad', () => {
     expect(left).toBeCalled();
     expect(right).not.toBeCalled();
   });
+
+  it('should apply function from maybe type', () => {
+    const effect = jest.fn();
+    const m1 = maybe(1);
+    const m2 = maybe(effect);
+    m1.apply(m2);
+
+    expect(effect).toBeCalled();
+    expect(effect).toBeCalledWith(1);
+  });
 });

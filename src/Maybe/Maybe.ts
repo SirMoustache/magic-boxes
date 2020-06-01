@@ -11,6 +11,9 @@ export interface Lazy<A> {
 }
 
 export interface Maybe<T> {
+  /**
+   * https://github.com/fantasyland/fantasy-land#functor
+   */
   map: <B>(fn: (val: T) => B) => Maybe<B>;
   orElse: <B>(elseFn: () => B | T) => B | T;
   /**
@@ -22,7 +25,11 @@ export interface Maybe<T> {
    * Alternative names: emit, value, valueOf
    */
   join: () => T | Nil;
-  // apply<B, C>(m: Maybe<B>): Maybe<C>;
+  /**
+   * Apply value to another monad containing a function
+   * https://github.com/fantasyland/fantasy-land#applicative
+   */
+  apply<B, C>(m: Maybe<(val: T) => C>): Maybe<C>;
   fork: <B>(left: () => B, right: (val: T) => B) => B;
   toString: () => string;
 }
@@ -39,7 +46,7 @@ export const maybe: MaybeFactory = <T>(val?: T): Maybe<T> => ({
   flatMap: (fn) => (isNil(val) ? maybe() : fn(val)),
   orElse: (elseFn) => (isNil(val) ? elseFn() : val),
   join: () => (isNil(val) ? undefined : val),
-  // apply: (m) => (isNil(val) ? maybe() : m.map(val),
+  apply: (m) => (isNil(val) ? maybe() : m.map((f) => f(val))),
   fork: (left, right) => (isNil(val) ? left() : right(val)),
   toString: () => `Maybe(${val})`,
 });
