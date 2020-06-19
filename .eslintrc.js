@@ -18,7 +18,7 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': ['error', prettierOptions],
-    'arrow-body-style': [2, 'as-needed'],
+    'arrow-body-style': 0,
     'class-methods-use-this': 0,
     'comma-dangle': [2, 'always-multiline'],
     'import/imports-first': 0,
@@ -34,6 +34,7 @@ module.exports = {
     'no-confusing-arrow': 0,
     'no-console': 1,
     'no-use-before-define': 0,
+    'no-unused-vars': 1,
     'prefer-template': 2,
     'require-yield': 0,
   },
